@@ -29,6 +29,14 @@ public class Counter {
     @ColumnInfo(name = "color")
     private int color;
 
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
     public String getTitle() {
         return title;
     }
