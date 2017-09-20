@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Contador</string>
+    <string name="new_counter_confirm_button">OK</string>
 </resources>
