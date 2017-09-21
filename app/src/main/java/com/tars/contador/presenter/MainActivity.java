@@ -7,30 +7,25 @@ import android.util.Log;
 
 import com.tars.contador.R;
 import com.tars.contador.contract.MVP;
-import com.tars.contador.contract.PresenterMainImpl;
 import com.tars.contador.model.Counter;
 import com.tars.contador.model.CounterDB;
 import com.tars.contador.model.DataBase;
+import com.tars.contador.view.NewCountViewImpl;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
+public class MainActivity extends AppCompatActivity implements MVP.PresenterMain {
 
-public class MainActivity extends AppCompatActivity implements MVP.MainView {
-
-    private static MVP.PresenterMain presenter;
     private List<Counter> arrCounter;
     private DataBase mDatabase;
+    MVP.NewCountView newCountView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
 
-        if (presenter == null) {
-            presenter = new PresenterMainImpl();
-        }
+        newCountView = new NewCountViewImpl(this, null);
+        setContentView(newCountView.getRootView());
 
         // Database test
         mDatabase = CounterDB.getInstance().getDataBase(getApplicationContext());
@@ -38,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements MVP.MainView {
         new DatabaseTest().execute();
     }
 
+    //TODO: Model
     private class DatabaseTest extends AsyncTask<String, Void, String> {
 
         @Override
