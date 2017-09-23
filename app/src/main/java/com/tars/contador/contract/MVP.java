@@ -20,8 +20,7 @@ public interface MVP {
 
     }
 
-
-    interface NewCountView extends MVP{
+    interface NewCountView extends MVP {
 
     }
 

@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
     <EditText
         android:id="@+id/new_counter_title_edit_text"
+        android:hint="@string/counter_nane_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/new_counter_value_edit_text"
+        android:hint="@string/counter_value_input"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

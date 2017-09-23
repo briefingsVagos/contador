@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Contador</string>
     <string name="new_counter_confirm_button">OK</string>
+
+    <string name="counter_nane_input">Nome do contador</string>
+    <string name="counter_value_input">Valor inicial</string>
+    <string name="default_value">0</string>
+
+    <!--errors-->
+    <string name="error_name_isempty">Digite um nome para o contador</string>
+
+    <!--toasts-->
+    <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salvo com sucesso</string>
 </resources>
