@@ -2,7 +2,6 @@ package com.tars.contador.async;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.tars.contador.interfaces.AsyncTaskListener;
 import com.tars.contador.model.Counter;
@@ -14,15 +13,13 @@ import java.util.List;
  * Created by lucasbonafe on 23/09/17.
  */
 
-public class AsyncCounterSave extends AsyncTask<String, Integer, Boolean> {
+public class AsyncShowCounters extends AsyncTask<String, Integer, List<Counter>> {
 
-    private AsyncTaskListener<Boolean> listener;
-    private Counter newCounter;
+    private AsyncTaskListener<List<Counter>> listener;
     private Context context;
 
-    public AsyncCounterSave(AsyncTaskListener<Boolean> listener, Counter newCounter, Context context) {
+    public AsyncShowCounters(AsyncTaskListener<List<Counter>> listener, Context context) {
         this.listener = listener;
-        this.newCounter = newCounter;
         this.context = context;
     }
 
@@ -32,14 +29,13 @@ public class AsyncCounterSave extends AsyncTask<String, Integer, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String ... strings) {
+    protected List<Counter> doInBackground(String ... strings) {
 
-        CounterRoom.getInstance().getDatabase(context).counterDao().insert(newCounter);
-        return true;
+        return CounterRoom.getInstance().getDatabase(context).counterDao().getAll();
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
+    protected void onPostExecute(List<Counter> result) {
         super.onPostExecute(result);
         listener.onTaskComplete(result);
     }

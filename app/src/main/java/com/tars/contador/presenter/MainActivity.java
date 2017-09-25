@@ -10,19 +10,20 @@ import com.tars.contador.contract.MVP;
 import com.tars.contador.model.Counter;
 import com.tars.contador.model.CounterRoom;
 import com.tars.contador.model.DB;
+import com.tars.contador.view.MainViewImpl;
 import com.tars.contador.view.NewCountViewImpl;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MVP.PresenterMain {
 
-    MVP.NewCountView newCountView;
+    MVP.MainView mainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        newCountView = new NewCountViewImpl(this, null);
-        setContentView(newCountView.getRootView());
+        mainView = new MainViewImpl(this, null);
+        setContentView(mainView.getRootView());
     }
 }

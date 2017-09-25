@@ -8,6 +8,7 @@
 
     <!--errors-->
     <string name="error_name_isempty">Digite um nome para o contador</string>
+    <string name="error_no_counters_result">Nenhum marcador ainda</string>
 
     <!--toasts-->
     <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salvo com sucesso</string>
