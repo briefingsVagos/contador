@@ -1,11 +1,11 @@
-package com.tars.contador.async;
+package com.tars.counter.async;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.tars.contador.interfaces.AsyncTaskListener;
-import com.tars.contador.model.Counter;
-import com.tars.contador.model.CounterRoom;
+import com.tars.counter.interfaces.AsyncTaskListener;
+import com.tars.counter.model.Counter;
+import com.tars.counter.model.CounterRoom;
 
 import java.util.List;
 

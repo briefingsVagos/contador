@@ -1,4 +1,4 @@
-package com.tars.contador.model;
+package com.tars.counter.model;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;

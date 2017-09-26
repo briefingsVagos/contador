@@ -1,4 +1,4 @@
-package com.tars.contador.interfaces;
+package com.tars.counter.interfaces;
 
 /**
  * Created by lucasbonafe on 23/09/17.

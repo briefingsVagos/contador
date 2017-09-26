@@ -1,4 +1,4 @@
-package com.tars.contador;
+package com.tars.counter;
 
 import org.junit.Test;
 

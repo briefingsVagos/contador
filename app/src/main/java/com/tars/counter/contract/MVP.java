@@ -1,4 +1,4 @@
-package com.tars.contador.contract;
+package com.tars.counter.contract;
 
 import android.view.View;
 

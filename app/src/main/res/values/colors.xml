@@ -6,7 +6,7 @@
     <color name="colorPrimaryLight">#99E4FD</color>
     <color name="colorAccent">#FD5B6F</color>
 
-    //Count Colors
+    <color name="colorFab">#4F93E0</color>
     <color name="colorBlue">#26AFE2</color>
     <color name="colorGreen">#48BEB9</color>
     <color name="colorRed">#FF6E57</color>

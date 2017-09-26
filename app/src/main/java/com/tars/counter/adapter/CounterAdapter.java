@@ -1,13 +1,12 @@
-package com.tars.contador.adapter;
+package com.tars.counter.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.tars.contador.R;
-import com.tars.contador.model.Counter;
+import com.tars.counter.R;
+import com.tars.counter.model.Counter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> {
     @Override
     public void onBindViewHolder(CounterHolder holder, int position) {
         holder.title.setText(mCounters.get(position).getTitle());
-        holder.value.setText(mCounters.get(position).getValue());
+        holder.value.setText(String.valueOf(mCounters.get(position).getValue()));
 
         // TODO some example of functional programming
 //        holder.moreButton.setOnClickListener(view -> updateItem(position));
@@ -42,5 +41,4 @@ public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> {
     public int getItemCount() {
         return mCounters != null ? mCounters.size() : 0;
     }
-
 }
