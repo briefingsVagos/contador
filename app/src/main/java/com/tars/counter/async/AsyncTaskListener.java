@@ -1,4 +1,4 @@
-package com.tars.counter.interfaces;
+package com.tars.counter.async;
 
 /**
  * Created by lucasbonafe on 23/09/17.

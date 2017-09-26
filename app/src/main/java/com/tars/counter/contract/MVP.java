@@ -9,12 +9,12 @@ import android.view.View;
  */
 public interface MVP {
 
-    /**
-     * Get the root Android View which is used internally by this MVP View for presenting data
-     * to the user
-     * @return root Android View of this MVP View
-     */
-    View getRootView();
+        /**
+         * Get the root Android View which is used internally by this MVP View for presenting data
+         * to the user
+         * @return root Android View of this MVP View
+         */
+        View getRootView();
 
     interface PresenterMain {
 

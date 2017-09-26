@@ -3,7 +3,6 @@ package com.tars.counter.async;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.tars.counter.interfaces.AsyncTaskListener;
 import com.tars.counter.model.Counter;
 import com.tars.counter.model.CounterRoom;
 

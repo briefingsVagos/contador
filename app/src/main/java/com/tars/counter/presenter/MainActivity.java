@@ -17,4 +17,10 @@ public class MainActivity extends AppCompatActivity implements MVP.PresenterMain
         mainView = new MainViewImpl(this, null);
         setContentView(mainView.getRootView());
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }

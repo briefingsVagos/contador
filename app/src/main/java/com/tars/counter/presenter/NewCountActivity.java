@@ -52,11 +52,8 @@ public class NewCountActivity extends AppCompatActivity implements MVP.Presenter
         }
     }
 
-
     private void circularRevealActivity() {
 
-        //int cx = rootLayout.getWidth() / 2;
-        //int cy = rootLayout.getHeight() / 2;
         int cx = getIntent().getIntExtra(REVEAL_X, 0);
         int cy = getIntent().getIntExtra(REVEAL_Y, 0);
 

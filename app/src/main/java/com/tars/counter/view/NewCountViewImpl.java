@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.tars.counter.R;
 import com.tars.counter.async.AsyncCounterSave;
 import com.tars.counter.contract.MVP;
-import com.tars.counter.interfaces.AsyncTaskListener;
+import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.model.Counter;
 
 import butterknife.BindString;
@@ -39,42 +39,11 @@ public class NewCountViewImpl implements MVP.NewCountView{
     @BindView(R.id.new_counter_title_edit_text) EditText newCounterTitleEditText;
     @BindView(new_counter_value_edit_text) EditText newCounterValueEditText;
 
-    /*
-    @BindView(R.id.new_counter_color_blue)
-    FloatingActionButton newCounterColorBlue;
-
-    @BindView(R.id.new_counter_color_green)
-    FloatingActionButton newCounterColorGreen;
-
-    @BindView(R.id.new_counter_color_red)
-    FloatingActionButton newCounterColorRed;
-
-    @BindView(R.id.new_counter_color_orange)
-    FloatingActionButton newCounterColorOrange;
-
-    @BindView(R.id.new_counter_color_yellow)
-    FloatingActionButton newCounterColorYellow;
-
-    @BindView(R.id.new_counter_ok_button)
-    Button newCounterOkButton;
-    */
 
     public NewCountViewImpl(Context context, ViewGroup container) {
         rootView = LayoutInflater.from(context).inflate(R.layout.new_count_view, container);
 
         ButterKnife.bind(this, rootView);
-
-
-        /*
-        newCounterColorBlue.setOnClickListener(colorChose);
-        newCounterColorGreen.setOnClickListener(colorChose);
-        newCounterColorRed.setOnClickListener(colorChose);
-        newCounterColorOrange.setOnClickListener(colorChose);
-        newCounterColorYellow.setOnClickListener(colorChose);
-
-        */
-
-
     }
 
     @OnClick({ R.id.new_counter_color_blue, R.id.new_counter_color_green, R.id.new_counter_color_red,
@@ -98,31 +67,6 @@ public class NewCountViewImpl implements MVP.NewCountView{
                 break;
         }
     }
-    /*
-    private OnClickListener colorChose = new OnClickListener() {
-
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.new_counter_color_blue:
-                    newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorBlue));
-                    break;
-                case R.id.new_counter_color_green:
-                    newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorGreen));
-                    break;
-                case R.id.new_counter_color_red:
-                    newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorRed));
-                    break;
-                case R.id.new_counter_color_orange:
-                    newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorOrange));
-                    break;
-                case R.id.new_counter_color_yellow:
-                    newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorYellow));
-                    break;
-            }
-        }
-    };
-    */
 
 
     @OnClick(R.id.new_counter_ok_button)
@@ -149,37 +93,6 @@ public class NewCountViewImpl implements MVP.NewCountView{
             new AsyncCounterSave(new TaskCounterSave(), newCounter, view.getContext().getApplicationContext()).execute();
         }
     }
-
-    /*
-    newCounterOkButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                boolean valid = true;
-                String finalName = newCounterTitleEditText.getText().toString();
-                int finalValue = 0;
-
-                if (finalName.trim().isEmpty()) {
-                    valid = false;
-                    newCounterTitleEditText.setError(NewCountViewImpl.this.errorNameIsEmpty);
-                }
-                else
-                    newCounterTitleEditText.setError(null);
-
-                if (!newCounterValueEditText.getText().toString().trim().isEmpty())
-                    finalValue = Integer.valueOf(newCounterValueEditText.getText().toString());
-
-                if (valid) {
-                    newCounter.setTitle(finalName);
-                    newCounter.setValue(finalValue);
-
-                    new AsyncCounterSave(new TaskCounterSave(), newCounter, view.getContext().getApplicationContext()).execute();
-                }
-            }
-        });
-     */
-
-
 
     @Deprecated
     private OnClickListener newCounterEditText = new OnClickListener() {

@@ -12,5 +12,4 @@
 
     <!--toasts-->
     <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salvo com sucesso</string>
-    <string name="title_activity_main2">Main2Activity</string>
 </resources>

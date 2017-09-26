@@ -15,7 +15,7 @@ import com.tars.counter.R;
 import com.tars.counter.adapter.CounterAdapter;
 import com.tars.counter.async.AsyncShowCounters;
 import com.tars.counter.contract.MVP;
-import com.tars.counter.interfaces.AsyncTaskListener;
+import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.model.Counter;
 import com.tars.counter.presenter.NewCountActivity;
 
