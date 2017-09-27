@@ -2,6 +2,8 @@ package com.tars.counter.contract;
 
 import android.view.View;
 
+import com.tars.counter.model.Counter;
+
 /**
  * MVP interface.
  * MVP view is used for presenting information to the user.
@@ -21,11 +23,11 @@ public interface MVP {
     }
 
     interface PresenterNewCount {
-
+        void saveACounter(Counter newCounter);
     }
 
     interface NewCountView extends MVP {
-
+        void saveACounter(boolean saved);
     }
 
     interface MainView extends MVP {

@@ -10,7 +10,10 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 import com.tars.counter.R;
+import com.tars.counter.async.AsyncCounterSave;
+import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.contract.MVP;
+import com.tars.counter.model.Counter;
 import com.tars.counter.view.NewCountViewImpl;
 
 import static com.tars.counter.view.MainViewImpl.REVEAL_X;
@@ -71,4 +74,21 @@ public class NewCountActivity extends AppCompatActivity implements MVP.Presenter
         circularReveal.start();
     }
 
+    @Override
+    public void saveACounter(Counter newCounter) {
+        new AsyncCounterSave(new TaskCounterSave(), newCounter, getApplicationContext()).execute();
+    }
+
+    public class TaskCounterSave implements AsyncTaskListener<Boolean>
+    {
+        @Override
+        public void onTaskStart() {
+            // TODO show a progress here?
+        }
+
+        @Override
+        public void onTaskComplete(Boolean result) {
+            newCountView.saveACounter(result);
+        }
+    }
 }

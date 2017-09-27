@@ -14,6 +14,8 @@ import com.tars.counter.async.AsyncCounterSave;
 import com.tars.counter.contract.MVP;
 import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.model.Counter;
+import com.tars.counter.presenter.MainActivity;
+import com.tars.counter.presenter.NewCountActivity;
 
 import butterknife.BindString;
 import butterknife.BindView;
@@ -29,6 +31,7 @@ import static com.tars.counter.R.id.new_counter_value_edit_text;
  */
 public class NewCountViewImpl implements MVP.NewCountView{
 
+    private static MVP.PresenterNewCount presenter;
     private View rootView;
     Counter newCounter = new Counter("New counter", 0, 0);
 
@@ -40,10 +43,13 @@ public class NewCountViewImpl implements MVP.NewCountView{
     @BindView(new_counter_value_edit_text) EditText newCounterValueEditText;
 
 
-    public NewCountViewImpl(Context context, ViewGroup container) {
+    public NewCountViewImpl(NewCountActivity context, ViewGroup container) {
         rootView = LayoutInflater.from(context).inflate(R.layout.new_count_view, container);
 
         ButterKnife.bind(this, rootView);
+
+        if (presenter == null)
+            presenter = context;
     }
 
     @OnClick({ R.id.new_counter_color_blue, R.id.new_counter_color_green, R.id.new_counter_color_red,
@@ -90,7 +96,7 @@ public class NewCountViewImpl implements MVP.NewCountView{
             newCounter.setTitle(finalName);
             newCounter.setValue(finalValue);
 
-            new AsyncCounterSave(new TaskCounterSave(), newCounter, view.getContext().getApplicationContext()).execute();
+            presenter.saveACounter(newCounter);
         }
     }
 
@@ -103,7 +109,7 @@ public class NewCountViewImpl implements MVP.NewCountView{
                 case R.id.new_counter_title_edit_text:
                     newCounter.setTitle(newCounterTitleEditText.getText().toString());
                     break;
-                case new_counter_value_edit_text:
+                case R.id.new_counter_value_edit_text:
                     String typeSafeNumber = newCounterValueEditText.getText().toString().trim();
                     newCounter.setValue(Integer.valueOf(typeSafeNumber.isEmpty()
                             ? "0"
@@ -116,23 +122,14 @@ public class NewCountViewImpl implements MVP.NewCountView{
     @Override
     public View getRootView() { return rootView; }
 
-    public class TaskCounterSave implements AsyncTaskListener<Boolean>
-    {
-        @Override
-        public void onTaskStart() {
-            // TODO show a progress here?
+    @Override
+    public void saveACounter(boolean saved) {
+        if (saved) {
+            Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        @Override
-        public void onTaskComplete(Boolean result) {
-            if (result)
-            {
-                Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                // TODO unexpected error?
-            }
-        }
+        // TODO something is wrong
+//        Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
     }
 }
