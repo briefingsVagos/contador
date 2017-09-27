@@ -19,6 +19,7 @@
             <EditText
                 android:id="@+id/new_counter_title_edit_text"
                 android:hint="@string/counter_nane_input"
+                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -26,13 +27,14 @@
                 android:id="@+id/new_counter_value_edit_text"
                 android:hint="@string/counter_value_input"
                 android:inputType="number"
+                android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/new_counter_title_edit_text" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/new_counter_color_blue"
-                app:backgroundTint="@color/colorBlue"
+                android:id="@+id/new_counter_color_purple"
+                app:backgroundTint="@color/colorPurple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabSize="normal"
@@ -50,8 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:fabSize="normal"
-                android:layout_toRightOf="@+id/new_counter_color_blue"
-                android:layout_toEndOf="@+id/new_counter_color_blue"
+                android:layout_toRightOf="@+id/new_counter_color_purple"
+                android:layout_toEndOf="@+id/new_counter_color_purple"
                 android:layout_below="@+id/new_counter_value_edit_text"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp" />

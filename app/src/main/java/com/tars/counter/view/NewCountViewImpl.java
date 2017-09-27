@@ -1,6 +1,5 @@
 package com.tars.counter.view;
 
-import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.tars.counter.R;
-import com.tars.counter.async.AsyncCounterSave;
 import com.tars.counter.contract.MVP;
-import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.model.Counter;
-import com.tars.counter.presenter.MainActivity;
 import com.tars.counter.presenter.NewCountActivity;
 
 import butterknife.BindString;
@@ -52,12 +48,12 @@ public class NewCountViewImpl implements MVP.NewCountView{
             presenter = context;
     }
 
-    @OnClick({ R.id.new_counter_color_blue, R.id.new_counter_color_green, R.id.new_counter_color_red,
+    @OnClick({ R.id.new_counter_color_purple, R.id.new_counter_color_green, R.id.new_counter_color_red,
             R.id.new_counter_color_orange, R.id.new_counter_color_yellow})
     public void colorChose(View view) {
         switch (view.getId()) {
-            case R.id.new_counter_color_blue:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorBlue));
+            case R.id.new_counter_color_purple:
+                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorPurple));
                 break;
             case R.id.new_counter_color_green:
                 newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorGreen));
