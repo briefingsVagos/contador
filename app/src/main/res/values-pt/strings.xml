@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contador</string>
+    <string name="counter_nane_input">Nome do contador</string>
+    <string name="counter_value_edit">Novo valor</string>
+    <string name="counter_value_input">Valor inicial</string>
+    <string name="error_name_isempty">Digite um nome para o contador</string>
+    <string name="error_no_counters_result">Nenhum contador ainda</string>
+    <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salva com sucesso</string>
+</resources>

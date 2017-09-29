@@ -11,14 +11,18 @@ import com.tars.counter.model.Counter;
  */
 public interface MVP {
 
-        /**
-         * Get the root Android View which is used internally by this MVP View for presenting data
-         * to the user
-         * @return root Android View of this MVP View
-         */
-        View getRootView();
+    /**
+     * Get the root Android View which is used internally by this MVP View for presenting data
+     * to the user
+     * @return root Android View of this MVP View
+     */
+    View getRootView();
 
     interface PresenterMain {
+
+    }
+
+    interface MainView extends MVP {
 
     }
 
@@ -30,7 +34,12 @@ public interface MVP {
         void saveACounter(boolean saved);
     }
 
-    interface MainView extends MVP {
 
+    interface PresenterEditCount {
+        void saveAEditedCounter(Counter counter);
+    }
+
+    interface EditCountView extends MVP {
+        void saveAEditedCounter(boolean saved);
     }
 }

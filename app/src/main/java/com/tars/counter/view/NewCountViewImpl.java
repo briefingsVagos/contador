@@ -1,5 +1,8 @@
 package com.tars.counter.view;
 
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +16,18 @@ import com.tars.counter.contract.MVP;
 import com.tars.counter.model.Counter;
 import com.tars.counter.presenter.NewCountActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindString;
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.tars.counter.R.id.new_counter_color_purple;
 import static com.tars.counter.R.id.new_counter_value_edit_text;
+import static com.tars.counter.R.layout.new_count_view;
 
 /**
  * View class that inflates the new_count_view
@@ -40,7 +49,7 @@ public class NewCountViewImpl implements MVP.NewCountView{
 
 
     public NewCountViewImpl(NewCountActivity context, ViewGroup container) {
-        rootView = LayoutInflater.from(context).inflate(R.layout.new_count_view, container);
+        rootView = LayoutInflater.from(context).inflate(new_count_view, container);
 
         ButterKnife.bind(this, rootView);
 
@@ -48,28 +57,53 @@ public class NewCountViewImpl implements MVP.NewCountView{
             presenter = context;
     }
 
-    @OnClick({ R.id.new_counter_color_purple, R.id.new_counter_color_green, R.id.new_counter_color_red,
-            R.id.new_counter_color_orange, R.id.new_counter_color_yellow})
-    public void colorChose(View view) {
-        switch (view.getId()) {
-            case R.id.new_counter_color_purple:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorPurple));
+    @BindViews({
+            R.id.new_counter_color_purple,
+            R.id.new_counter_color_green,
+            R.id.new_counter_color_red,
+            R.id.new_counter_color_orange,
+            R.id.new_counter_color_yellow})
+    FloatingActionButton[] colors;
+
+    final ButterKnife.Action<FloatingActionButton> UNSELECT_ALL = new ButterKnife.Action<FloatingActionButton>() {
+        @Override
+        public void apply(@NonNull FloatingActionButton colorButton, int index) {
+            colorButton.setImageResource(0);
+        }
+    };
+
+    @OnClick({
+            R.id.new_counter_color_purple,
+            R.id.new_counter_color_green,
+            R.id.new_counter_color_red,
+            R.id.new_counter_color_orange,
+            R.id.new_counter_color_yellow})
+    public void colorChose(FloatingActionButton newCounterColor) {
+
+        ButterKnife.apply(colors, UNSELECT_ALL);
+
+        List<Resources> viewResources = new ArrayList<>();
+        viewResources.add(rootView.getResources());
+
+        newCounterColor.setImageDrawable(ContextCompat.getDrawable(getRootView().getContext(), R.drawable.ic_check_24dp));
+        switch (newCounterColor.getId()) {
+            case new_counter_color_purple:
+                newCounter.setColor(ContextCompat.getColor(newCounterColor.getContext(), R.color.colorPurple));
                 break;
             case R.id.new_counter_color_green:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorGreen));
+                newCounter.setColor(ContextCompat.getColor(newCounterColor.getContext(), R.color.colorGreen));
                 break;
             case R.id.new_counter_color_red:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorRed));
+                newCounter.setColor(ContextCompat.getColor(newCounterColor.getContext(), R.color.colorRed));
                 break;
             case R.id.new_counter_color_orange:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorOrange));
+                newCounter.setColor(ContextCompat.getColor(newCounterColor.getContext(), R.color.colorOrange));
                 break;
             case R.id.new_counter_color_yellow:
-                newCounter.setColor(ContextCompat.getColor(view.getContext(), R.color.colorYellow));
+                newCounter.setColor(ContextCompat.getColor(newCounterColor.getContext(), R.color.colorYellow));
                 break;
         }
     }
-
 
     @OnClick(R.id.new_counter_ok_button)
     public void submit(View view) {

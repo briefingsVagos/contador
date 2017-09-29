@@ -67,7 +67,7 @@ public class NewCountActivity extends AppCompatActivity implements MVP.Presenter
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             circularReveal = ViewAnimationUtils.createCircularReveal(rootLayout, cx, cy, 0, finalRadius);
         }
-        circularReveal.setDuration(650);
+        circularReveal.setDuration(500);
 
         // make the view visible and start the animation
         rootLayout.setVisibility(View.VISIBLE);

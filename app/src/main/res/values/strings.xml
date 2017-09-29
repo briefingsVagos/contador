@@ -1,15 +1,16 @@
 <resources>
-    <string name="app_name">Contador</string>
-    <string name="new_counter_confirm_button">OK</string>
+    <string name="app_name">Counter</string>
+    <string name="new_counter_confirm_button" translatable="false">OK</string>
 
-    <string name="counter_nane_input">Nome do contador</string>
-    <string name="counter_value_input">Valor inicial</string>
-    <string name="default_value">0</string>
+    <string name="counter_nane_input">Counter name</string>
+    <string name="counter_value_input">Initial value</string>
+    <string name="counter_value_edit">New value</string>
+    <string name="default_value" translatable="false">0</string>
 
     <!--errors-->
-    <string name="error_name_isempty">Digite um nome para o contador</string>
-    <string name="error_no_counters_result">Nenhum marcador ainda</string>
+    <string name="error_name_isempty">Type a counter name</string>
+    <string name="error_no_counters_result">No counters yet</string>
 
     <!--toasts-->
-    <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salvo com sucesso</string>
+    <string name="toast_counter_saved_with_success">Old school counter save with success</string>
 </resources>
