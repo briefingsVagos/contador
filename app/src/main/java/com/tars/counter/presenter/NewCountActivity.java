@@ -88,7 +88,7 @@ public class NewCountActivity extends AppCompatActivity implements MVP.Presenter
 
         @Override
         public void onTaskComplete(Boolean result) {
-            newCountView.saveACounter(result);
+            newCountView.saveACounter();
         }
     }
 }

@@ -31,7 +31,7 @@ import static com.tars.counter.R.id.new_counter_value_edit_text;
  */
 public class NewCountViewImpl implements MVP.NewCountView{
 
-    private static MVP.PresenterNewCount presenter;
+    private MVP.PresenterNewCount presenter;
     private View rootView;
     Counter newCounter = new Counter("New counter", 0, 0);
 
@@ -47,9 +47,7 @@ public class NewCountViewImpl implements MVP.NewCountView{
         rootView = LayoutInflater.from(context).inflate(R.layout.new_count_view, container);
 
         ButterKnife.bind(this, rootView);
-
-        if (presenter == null)
-            presenter = context;
+        presenter = context;
     }
 
     @OnClick({ R.id.new_counter_color_blue, R.id.new_counter_color_green, R.id.new_counter_color_red,
@@ -123,13 +121,8 @@ public class NewCountViewImpl implements MVP.NewCountView{
     public View getRootView() { return rootView; }
 
     @Override
-    public void saveACounter(boolean saved) {
-        if (saved) {
-            Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // TODO something is wrong
-//        Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
+    public void saveACounter() {
+        Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
+        ((NewCountActivity) presenter).finish();
     }
 }

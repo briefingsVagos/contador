@@ -12,4 +12,5 @@
 
     <!--toasts-->
     <string name="toast_counter_saved_with_success">Mensagem antiquada de contador salvo com sucesso</string>
+    <string name="toast_counter_removed_with_success">Mensagem antiquada de contador removido com sucesso</string>
 </resources>

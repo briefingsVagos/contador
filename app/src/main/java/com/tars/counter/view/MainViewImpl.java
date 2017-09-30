@@ -1,26 +1,25 @@
 package com.tars.counter.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.tars.counter.R;
 import com.tars.counter.adapter.CounterAdapter;
-import com.tars.counter.async.AsyncShowCounters;
 import com.tars.counter.contract.MVP;
-import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.model.Counter;
+import com.tars.counter.presenter.MainActivity;
 import com.tars.counter.presenter.NewCountActivity;
 
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -32,41 +31,42 @@ import butterknife.OnClick;
  */
 public class MainViewImpl implements MVP.MainView{
 
-    @BindView(R.id.counter_recycler_view)
-    RecyclerView mRecyclerView;
-
-    @BindView(R.id.no_results_linear_layout)
-    LinearLayout noResultsLinearLayout;
-
-    @BindView(R.id.new_counter_fab)
-    FloatingActionButton newCounterFab;
-
+    private MVP.PresenterMain presenter;
     private View rootView;
     private List<Counter> mCounters;
     private CounterAdapter mAdapter;
 
+    @BindView(R.id.counter_recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.no_results_linear_layout) LinearLayout noResultsLinearLayout;
+    @BindView(R.id.new_counter_fab) FloatingActionButton newCounterFab;
+
+    @BindString(R.string.toast_counter_removed_with_success) String toastRemovedWithSuccess;
+
     public static final String REVEAL_X="REVEAL_X";
     public static final String REVEAL_Y="REVEAL_Y";
 
-    public MainViewImpl(Context context, ViewGroup container) {
-        rootView = LayoutInflater.from(context).inflate(R.layout.main_view, container);
+    public MainViewImpl(MainActivity presenter, ViewGroup container) {
+        rootView = LayoutInflater.from(presenter).inflate(R.layout.main_view, container);
 
         ButterKnife.bind(this, rootView);
-
-        // TODO Should be called in the event onResume || onStart?
-        new AsyncShowCounters(new TaskShowCounters(), rootView.getContext().getApplicationContext()).execute();
+        this.presenter = presenter;
     }
 
-    private void setupRecycler() {
+    private void setRecyclerView() {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new CounterAdapter(mCounters);
+        mAdapter = new CounterAdapter((MainActivity) presenter, mCounters);
         mRecyclerView.setAdapter(mAdapter);
 
-        mRecyclerView.addItemDecoration(
-                new DividerItemDecoration(rootView.getContext(), DividerItemDecoration.VERTICAL));
+//        mRecyclerView.addItemDecoration(
+//                new DividerItemDecoration(rootView.getContext(), DividerItemDecoration.VERTICAL));
+
+        setRecyclerViewVisibility();
+    }
+
+    private void setRecyclerViewVisibility() {
 
         if (mCounters == null || mCounters.size() == 0) {
             mRecyclerView.setVisibility(View.GONE);
@@ -81,18 +81,17 @@ public class MainViewImpl implements MVP.MainView{
     @Override
     public View getRootView() { return rootView; }
 
-    public class TaskShowCounters implements AsyncTaskListener<List<Counter>>
-    {
-        @Override
-        public void onTaskStart() {
-            // TODO show a progress here?
-        }
+    @Override
+    public void removeACounter(Counter removedCounter) {
+        mAdapter.notifyItemRemoved(removedCounter);
+        setRecyclerViewVisibility();
+        Toast.makeText(rootView.getContext(), toastRemovedWithSuccess, Toast.LENGTH_SHORT).show();
+    }
 
-        @Override
-        public void onTaskComplete(List<Counter> result) {
-            mCounters = result;
-            setupRecycler();
-        }
+    @Override
+    public void showCounters(List<Counter> mCounters) {
+        this.mCounters = mCounters;
+        setRecyclerView();
     }
 
     @OnClick(R.id.new_counter_fab)
