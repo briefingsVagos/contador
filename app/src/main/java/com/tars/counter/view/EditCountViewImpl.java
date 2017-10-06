@@ -25,7 +25,7 @@ import static com.tars.counter.R.id.edit_counter_value_edit_text;
  * It was created to remove the view logic from Activities
  * that in this project should be treated as Presenters
  */
-public class EditCountViewImpl implements MVP.NewCountView{
+public class EditCountViewImpl implements MVP.EditCountView{
 
     private static PresenterEditCount presenter;
     private View rootView;
@@ -118,13 +118,7 @@ public class EditCountViewImpl implements MVP.NewCountView{
     public View getRootView() { return rootView; }
 
     @Override
-    public void saveACounter(boolean saved) {
-        if (saved) {
-            Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
-            return;
-        }
+    public void saveAEditedCounter(boolean saved) {
 
-        // TODO something is wrong
-//        Toast.makeText(rootView.getContext(), toastSavedWithSuccess, Toast.LENGTH_SHORT).show();
     }
 }

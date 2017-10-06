@@ -10,7 +10,7 @@
         android:id="@+id/counter_color_view"
         android:layout_width="7dp"
         android:layout_height="match_parent"
-        tools:background="@color/colorBlue"/>
+        tools:background="@color/colorPurple"/>
 
     <LinearLayout
         android:layout_width="match_parent"
