@@ -12,5 +12,6 @@
     <string name="error_no_counters_result">No counters yet</string>
 
     <!--toasts-->
-    <string name="toast_counter_saved_with_success">Old school counter save with success</string>
+    <string name="toast_counter_saved_with_success">Old school counter saved with success</string>
+    <string name="toast_counter_removed_with_success">Mensagem antiquada de contador removido com sucesso</string>
 </resources>

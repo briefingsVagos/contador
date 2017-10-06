@@ -4,6 +4,8 @@ import android.view.View;
 
 import com.tars.counter.model.Counter;
 
+import java.util.List;
+
 /**
  * MVP interface.
  * MVP view is used for presenting information to the user.
@@ -19,11 +21,12 @@ public interface MVP {
     View getRootView();
 
     interface PresenterMain {
-
+        void removeACounter(Counter removedCounter);
     }
 
     interface MainView extends MVP {
-
+        void removeACounter(Counter removedCounter);
+        void showCounters(List<Counter> mCounters); // TODO Temos aqui um method sem "equivalente" no PresenterMain?
     }
 
     interface PresenterNewCount {
@@ -31,7 +34,7 @@ public interface MVP {
     }
 
     interface NewCountView extends MVP {
-        void saveACounter(boolean saved);
+        void saveACounter();
     }
 
 
