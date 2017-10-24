@@ -6,7 +6,9 @@ import android.view.View;
  * Created by lucasbonafe on 30/09/17.
  */
 
-public interface CounterRemoveListener {
+public interface CounterListener {
 
     void onLongClick(int position);
+
+    void onClick(int position);
 }

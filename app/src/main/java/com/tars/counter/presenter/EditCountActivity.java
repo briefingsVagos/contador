@@ -1,43 +1,34 @@
 package com.tars.counter.presenter;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
 
 import com.tars.counter.R;
-import com.tars.counter.async.AsyncCounterSave;
-import com.tars.counter.async.AsyncTaskListener;
-import com.tars.counter.contract.MVP;
-import com.tars.counter.model.Counter;
 
-public class EditCountActivity extends AppCompatActivity implements MVP.PresenterEditCount {
 
-    MVP.EditCountView editCountView;
+public class EditCountActivity extends AppCompatActivity {
+
+    TextView title;
+    TextView number;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_edit_count);
 
-        overridePendingTransition(R.anim.do_not_move, R.anim.do_not_move);
-        //editCountView = new EditCountViewImpl(this, null);
-        setContentView(editCountView.getRootView());
+        title = (TextView) findViewById(R.id.test1);
+        number = (TextView) findViewById(R.id.test2);
 
-    }
 
-    @Override
-    public void saveAEditedCounter(Counter counter) {
-        new AsyncCounterSave(new TaskCounterSave(), counter, getApplicationContext()).execute();
-    }
+        Bundle bundle = getIntent().getExtras();
 
-    public class TaskCounterSave implements AsyncTaskListener<Boolean>
-    {
-        @Override
-        public void onTaskStart() {
-            // TODO show a progress here?
-        }
+        String titleToEdit = bundle.getString("COUNTER_TITLE");
+        int numberToEdit = bundle.getInt("COUNTER_VALUE");
 
-        @Override
-        public void onTaskComplete(Boolean result) {
-            editCountView.saveAEditedCounter(result);
-        }
+        title.setText(titleToEdit);
+        number.setText(String.valueOf(numberToEdit));
+
     }
 }

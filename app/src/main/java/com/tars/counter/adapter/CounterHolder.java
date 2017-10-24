@@ -16,17 +16,26 @@ public class CounterHolder extends RecyclerView.ViewHolder {
     public TextView value;
     public View color;
 
-    public CounterHolder(final View itemView, final CounterRemoveListener mCounterDeleteListener) {
+    public CounterHolder(final View itemView, final CounterListener mCounterListener) {
         super(itemView);
         title = itemView.findViewById(R.id.counter_title_text_view);
         value = itemView.findViewById(R.id.counter_value_text_view);
         color = itemView.findViewById(R.id.counter_color_view);
 
+        //Long click for remove
         itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                mCounterDeleteListener.onLongClick(getAdapterPosition());
+                mCounterListener.onLongClick(getAdapterPosition());
                 return true;
+            }
+        });
+
+        //Click for edit
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCounterListener.onClick(getAdapterPosition());
             }
         });
     }

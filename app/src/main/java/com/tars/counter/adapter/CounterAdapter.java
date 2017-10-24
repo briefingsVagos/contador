@@ -15,7 +15,7 @@ import java.util.List;
  * Created by lucasbonafe on 24/09/17.
  */
 
-public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> implements CounterRemoveListener {
+public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> implements CounterListener {
 
     private final List<Counter> mCounters;
     private MVP.PresenterMain presenter;
@@ -54,5 +54,10 @@ public class CounterAdapter extends RecyclerView.Adapter<CounterHolder> implemen
     @Override
     public void onLongClick(int position) {
         presenter.removeACounter(mCounters.get(position));
+    }
+
+    @Override
+    public void onClick(int position) {
+        presenter.sendACounterToEdit(mCounters.get(position));
     }
 }

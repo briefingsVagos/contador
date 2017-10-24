@@ -22,6 +22,7 @@ public interface MVP {
 
     interface PresenterMain {
         void removeACounter(Counter removedCounter);
+        void sendACounterToEdit(Counter counterToEdit);
     }
 
     interface MainView extends MVP {
@@ -35,14 +36,5 @@ public interface MVP {
 
     interface NewCountView extends MVP {
         void saveACounter();
-    }
-
-
-    interface PresenterEditCount {
-        void saveAEditedCounter(Counter counter);
-    }
-
-    interface EditCountView extends MVP {
-        void saveAEditedCounter(boolean saved);
     }
 }

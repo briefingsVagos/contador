@@ -1,6 +1,8 @@
 package com.tars.counter.presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import com.tars.counter.async.AsyncCounterRemove;
@@ -34,6 +36,17 @@ public class MainActivity extends AppCompatActivity implements MVP.PresenterMain
     @Override
     public void removeACounter(Counter removedCounter) {
         new AsyncCounterRemove(new TaskCounterRemove(), removedCounter, getApplicationContext()).execute();
+    }
+
+    @Override
+    public void sendACounterToEdit (@NonNull Counter counterToEdit) {
+        Bundle bundle = new Bundle();
+        bundle.putString("COUNTER_TITLE", counterToEdit.getTitle());
+        bundle.putInt("COUNTER_VALUE", counterToEdit.getValue());
+
+        Intent intent = new Intent(this, EditCountActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public class TaskShowCounters implements AsyncTaskListener<List<Counter>>

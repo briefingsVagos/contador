@@ -16,9 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presenter.NewCountActivity"
-            android:theme="@style/Theme.Transparent"
-            android:launchMode="singleTask" />
+        <activity
+            android:name=".presenter.NewCountActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".presenter.EditCountActivity"></activity>
     </application>
 
 </manifest>
