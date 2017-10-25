@@ -14,12 +14,12 @@ import com.tars.counter.async.AsyncCounterSave;
 import com.tars.counter.async.AsyncTaskListener;
 import com.tars.counter.contract.MVP;
 import com.tars.counter.model.Counter;
-import com.tars.counter.view.NewCountViewImpl;
+import com.tars.counter.view.NewCounterViewImpl;
 
 import static com.tars.counter.view.MainViewImpl.REVEAL_X;
 import static com.tars.counter.view.MainViewImpl.REVEAL_Y;
 
-public class NewCountActivity extends AppCompatActivity implements MVP.PresenterNewCount {
+public class NewCounterActivity extends AppCompatActivity implements MVP.PresenterNewCounter {
 
     MVP.NewCountView newCountView;
 
@@ -30,10 +30,10 @@ public class NewCountActivity extends AppCompatActivity implements MVP.Presenter
         super.onCreate(savedInstanceState);
 
         overridePendingTransition(R.anim.do_not_move, R.anim.do_not_move);
-        newCountView = new NewCountViewImpl(this, null);
+        newCountView = new NewCounterViewImpl(this, null);
         setContentView(newCountView.getRootView());
 
-        rootLayout = (FrameLayout) findViewById(R.id.root_layout);
+        rootLayout = findViewById(R.id.root_layout);
 
         if (savedInstanceState == null) {
             rootLayout.setVisibility(View.INVISIBLE);

@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presenter.NewCountActivity"
+            android:name=".presenter.NewCounterActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".presenter.EditCountActivity"></activity>
+        <activity android:name=".presenter.EditCounterActivity"></activity>
     </application>
 
 </manifest>

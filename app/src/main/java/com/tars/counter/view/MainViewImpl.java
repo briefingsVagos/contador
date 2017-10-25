@@ -15,7 +15,7 @@ import com.tars.counter.adapter.CounterAdapter;
 import com.tars.counter.contract.MVP;
 import com.tars.counter.model.Counter;
 import com.tars.counter.presenter.MainActivity;
-import com.tars.counter.presenter.NewCountActivity;
+import com.tars.counter.presenter.NewCounterActivity;
 
 import java.util.List;
 
@@ -102,7 +102,7 @@ public class MainViewImpl implements MVP.MainView{
         location[0] += newCounterFab.getWidth() / 2;
         location[1] += newCounterFab.getHeight() / 2;
 
-        Intent intent = new Intent(rootView.getContext(), NewCountActivity.class);
+        Intent intent = new Intent(rootView.getContext(), NewCounterActivity.class);
         intent.putExtra(REVEAL_X, location[0]);
         intent.putExtra(REVEAL_Y, location[1]);
 

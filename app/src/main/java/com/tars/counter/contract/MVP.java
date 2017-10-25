@@ -25,16 +25,23 @@ public interface MVP {
         void sendACounterToEdit(Counter counterToEdit);
     }
 
+    interface PresenterNewCounter {
+        void saveACounter(Counter newCounter);
+    }
+
+    interface PresenterEditCounter {
+    }
+
     interface MainView extends MVP {
         void removeACounter(Counter removedCounter);
         void showCounters(List<Counter> mCounters); // TODO Temos aqui um method sem "equivalente" no PresenterMain?
     }
 
-    interface PresenterNewCount {
-        void saveACounter(Counter newCounter);
-    }
-
     interface NewCountView extends MVP {
         void saveACounter();
+    }
+
+    interface EditView extends MVP {
+
     }
 }

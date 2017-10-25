@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity implements MVP.PresenterMain
         Bundle bundle = new Bundle();
         bundle.putString("COUNTER_TITLE", counterToEdit.getTitle());
         bundle.putInt("COUNTER_VALUE", counterToEdit.getValue());
+        bundle.putInt("COUNTER_COLOR", counterToEdit.getColor());
 
-        Intent intent = new Intent(this, EditCountActivity.class);
+        Intent intent = new Intent(this, EditCounterActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
